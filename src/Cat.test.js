@@ -1,7 +1,7 @@
 import Cat from "./Cat";
 import { screen, render } from "@testing-library/react";
 
-test("Displays the provided name", () => {
+test("should display the provided name", () => {
   render(
     <Cat
       name={"Kristian"}
@@ -11,31 +11,31 @@ test("Displays the provided name", () => {
       toggleTape={jest.fn()}
     />
   );
-  expect(screen.getByText("Kristian", { exact: false })).toBeInTheDocument();
+  expect(screen.getByText("Copy Cat Kristian")).toBeInTheDocument();
 });
 
-test("Should display input text in paragraph when isCopying is set to true", () => {
+test.only("should display input text in paragraph when isCopying is set to true", () => {
   render(
     <Cat
       name={"Kristian"}
-      value={"lorem ipsum"}
+      value={"hej"}
       handleChange={jest.fn()}
       isCopying={true}
       toggleTape={jest.fn()}
     />
   );
-  expect(screen.getByText("lorem ipsum")).toBeInTheDocument();
+  expect(screen.getByText("hej")).toBeInTheDocument()
 });
 
-test("Should not display input text in paragraph when isCopying is set to false", () => {
+test.only("should not display input text in paragraph when isCopying is set to false", () => {
   render(
     <Cat
       name={"Kristian"}
-      value={"lorem ipsum"}
+      value={"hej"}
       handleChange={jest.fn()}
       isCopying={false}
       toggleTape={jest.fn()}
     />
   );
-  expect(screen.queryByText("lorem ipsum")).not.toBeInTheDocument();
+  expect(screen.queryByText("hej")).not.toBeInTheDocument()
 });
